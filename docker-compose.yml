@@ -1,0 +1,15 @@
+version: '3'
+services:
+    keras-reprod-test:
+        build: ./env
+        environment:
+            - USER=${USER}
+            - NVIDIA_VISIBLE_DEVICES=0
+        user: ${UID}:${UID}
+        container_name: keras-reprod-test
+        volumes:
+            - .:/home/${USER}/projects/
+        working_dir: /home/${USER}/projects/
+        command: ./run_all.sh
+        # command: /bin/bash
+        tty: true
